@@ -118,7 +118,8 @@ void TFRebroadcaster::tf_cb(const tf2_msgs::msg::TFMessage & msg)
       {
         // If they do match, rebroadcast to new topic, prepending the prefix if necessary
         geometry_msgs::msg::TransformStamped tf_out;
-        tf_out.header.stamp = tf_in.header.stamp;
+        // tf_out.header.stamp = tf_in.header.stamp;
+        tf_out.header.stamp = this->get_clock()->now();
         tf_out.transform.translation.x = tf_in.transform.translation.x;
         tf_out.transform.translation.y = tf_in.transform.translation.y;
         tf_out.transform.translation.z = tf_in.transform.translation.z;
